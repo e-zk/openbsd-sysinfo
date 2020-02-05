@@ -2,20 +2,20 @@
 # openbsd sysinfo script
 
 # fetch system info
-OS=`uname -sr`
-KERNEL=`uname -v`
-SH=`basename $SHELL`
-PACKAGES=`(pkg_info -a | wc -l) | awk '{$1=$1};1'`
+OS=$(uname -sr)
+KERNEL=$(uname -v)
+SH=$(basename $SHELL)
+PACKAGES=$((pkg_info -a | wc -l) | awk '{$1=$1};1')
 WM=${WM:-"$(grep 'exec' $HOME/.xsession | sed 's/exec //g')"}
 
 # colors
-rc="`tput sgr0`"
+rc="$(tput sgr0)"
 c0="${rc}"
-c1="`tput setab 0``tput setaf 4`"
-c2="`tput setab 0``tput setaf 3`"
-c3="`tput setab 0``tput setaf 6`"
-c4="`tput setab 0``tput setaf 2`"
-c5="`tput setab 0``tput setaf 5`"
+c1="$(tput setab 0)$(tput setaf 4)"
+c2="$(tput setab 0)$(tput setaf 3)"
+c3="$(tput setab 0)$(tput setaf 6)"
+c4="$(tput setab 0)$(tput setaf 2)"
+c5="$(tput setab 0)$(tput setaf 5)"
 
 # print
 cat <<EOF
