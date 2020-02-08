@@ -4,7 +4,7 @@
 # fetch system info
 OS=$(uname -sr)
 KERNEL=$(uname -v)
-SH=$(basename $SHELL)
+SH=${SHELL##*/}
 PACKAGES=$((pkg_info -a | wc -l) | awk '{$1=$1};1')
 WM=${WM:-"$(grep 'exec' $HOME/.xsession | sed 's/exec //g')"}
 
