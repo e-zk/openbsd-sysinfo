@@ -2,11 +2,11 @@
 # openbsd sysinfo script
 
 # fetch system info
-OS=$(uname -sr)
-KERNEL=$(uname -v)
-SH=${SHELL##*/}
+OS="$(uname -sr)"
+KERNEL="$(uname -v)"
+SH="${SHELL##*/}"
 PACKAGES=$((pkg_info -a | wc -l) | awk '{$1=$1};1')
-WM=${WM:-"$(grep 'exec' $HOME/.xsession | sed 's/exec //g')"}
+WM=${WM:-"$(basename $(tail -1 $HOME/.xsession | sed 's/exec //g'))"}
 
 # colors
 rc="$(tput sgr0)"
